@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderservice-deployment
+spec:
+  selector:
+    matchLabels:
+      app: orderservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: orderservice
+    spec:
+      containers:
+        - name: orderservice
+          image: emreoytun/orderservice:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081  # Updated to match the application's port
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orderservice-ssvc
+spec:
+  selector:
+    app: orderservice
+  ports:
+    - protocol: "TCP"
+      port: 80             # Port exposed by the service
+      targetPort: 8081     # Port on which the application is listening
+  type: LoadBalancer
