@@ -1,15 +1,10 @@
 package com.turkcell.pair3.orderservice.controllers;
 
-import com.turkcell.pair3.orderservice.entities.Order;
-import com.turkcell.pair3.orderservice.repositories.OrderRepository;
 import com.turkcell.pair3.orderservice.services.abstracts.OrderService;
 import com.turkcell.pair3.orderservice.services.dtos.requests.CreateOrderRequest;
-import com.turkcell.pair3.orderservice.services.dtos.responses.CreateOrderResponse;
-import com.turkcell.pair3.orderservice.services.dtos.responses.ListOrderResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
